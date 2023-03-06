@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         adapter = Adapter(viewModel.getItemList())
         recyclerView = binding.recyclerView
+        recyclerView.layoutManager = GridLayoutManager(this, 1)
         recyclerView.adapter = adapter
     }
 }
