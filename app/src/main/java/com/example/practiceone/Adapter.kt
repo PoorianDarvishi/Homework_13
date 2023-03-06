@@ -8,12 +8,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class Adapter(
-    private val items : ArrayList<Color>
-) :
-    RecyclerView.Adapter<Adapter.ViewHolderAdapter>() {
-    class ViewHolderAdapter(itemView : View): RecyclerView.ViewHolder(itemView){
+    private val items: ArrayList<Color>, private val click: (color: Color) -> Unit
+) : RecyclerView.Adapter<Adapter.ViewHolderAdapter>() {
+    class ViewHolderAdapter(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val frameColor: FrameLayout = itemView.findViewById(R.id.frameLayout)
-        val colorName : TextView = itemView.findViewById(R.id.textView)
+        val colorName: TextView = itemView.findViewById(R.id.textView)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderAdapter {
@@ -29,6 +28,11 @@ class Adapter(
     override fun onBindViewHolder(holder: ViewHolderAdapter, position: Int) {
         holder.colorName.text = items[position].nameColor
         holder.colorName.setTextColor(android.graphics.Color.parseColor(items[position].textColor))
-        holder.frameColor.setBackgroundColor(android.graphics.Color.parseColor(items[position].backgroundColor))
+        holder.frameColor.apply {
+            setBackgroundColor(android.graphics.Color.parseColor(items[position].backgroundColor))
+            setOnClickListener {
+                click(items[position])
+            }
+        }
     }
 }
