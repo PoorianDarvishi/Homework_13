@@ -52,7 +52,7 @@ class TaskFragment : Fragment(R.layout.fragment_task) {
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         if(newConfig.orientation == 2){
-            recyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
+            recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
         }else{
             recyclerView.layoutManager = GridLayoutManager(requireContext(), 1)
         }
