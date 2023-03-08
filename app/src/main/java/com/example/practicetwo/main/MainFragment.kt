@@ -32,6 +32,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         intent.putExtra(TaskFragment.TASK_NAME, viewModel.taskName.value)
         intent.putExtra(TaskFragment.TASK_NUMBER, viewModel.taskNumber.value!!.toInt())
         startActivity(intent)
+        requireActivity().finish()
     }
 
 }
